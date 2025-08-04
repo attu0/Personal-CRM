@@ -1,0 +1,783 @@
+/* --- CSS Variables for Theming --- */
+:root {
+  /* Light (White with Blue-Purple) Theme */
+  --bg-light: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+  --card-bg-light: rgba(255, 255, 255, 0.95);
+  --text-light: #1e293b;
+  --text-secondary-light: #64748b;
+  --border-light: rgba(148, 163, 184, 0.2);
+  --primary-light: #6366f1; /* Indigo */
+  --primary-hover-light: #4f46e5;
+  --secondary-light: #8b5cf6; /* Purple */
+  --secondary-hover-light: #7c3aed;
+  --accent-light: #06b6d4; /* Cyan */
+  
+  /* Dark Theme */
+  --bg-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  --card-bg-dark: rgba(30, 41, 59, 0.8);
+  --text-dark: #ffffff;
+  --text-secondary-dark: #cbd5e1;
+  --border-dark: rgba(148, 163, 184, 0.3);
+  --primary-dark: #818cf8; /* Light Indigo for dark mode */
+  --primary-hover-dark: #6366f1;
+  --secondary-dark: #a78bfa; /* Light Purple for dark mode */
+  --secondary-hover-dark: #8b5cf6;
+  --accent-dark: #22d3ee; /* Light Cyan */
+
+  /* Universal */
+  --font-main: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  --transition-speed: 0.3s;
+  --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Form Control Styling --- */
+body.dark-theme input.form-control {
+  background: rgba(30, 41, 59, 0.5);
+  border-color: var(--border-dark);
+  color: #ffffff;
+}
+
+body.dark-theme input.form-control:focus {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: var(--primary-dark);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
+}
+
+body.dark-theme input.form-control::placeholder {
+  color: #cbd5e1;
+  opacity: 0.9;
+}
+
+/* --- Label and text styling for dark theme --- */
+body.dark-theme .text-muted {
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme h6.text-muted {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme label {
+  color: #ffffff !important;
+}
+
+/* --- Button Dark Theme Styling --- */
+body.dark-theme .btn-primary {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: #ffffff;
+}
+
+body.dark-theme .btn-primary:hover {
+  background: #6366f1;
+  border-color: #6366f1;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+body.dark-theme .btn-primary:focus {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.3);
+}
+
+body.dark-theme .btn-primary:active {
+  background: #4f46e5 !important;
+  border-color: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+/* Secondary button styling for dark theme */
+body.dark-theme .btn-secondary {
+  background: #475569;
+  border-color: #475569;
+  color: #ffffff;
+}
+
+body.dark-theme .btn-secondary:hover {
+  background: #64748b;
+  border-color: #64748b;
+  color: #ffffff;
+}
+
+/* Dark theme CSS variables that were misplaced */
+body.dark-theme {
+  --text-dark: #ffffff;
+  --text-secondary-dark: #e2e8f0;
+  --border-dark: rgba(148, 163, 184, 0.1);
+  --primary-dark: #818cf8;
+  --primary-hover-dark: #6366f1;
+  --secondary-dark: #a78bfa;
+  --secondary-hover-dark: #8b5cf6;
+  --accent-dark: #22d3ee;
+}
+
+  /* Universal */
+  --font-main: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  --transition-speed: 0.3s;
+  --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Global Styles --- */
+body {
+  font-family: var(--font-main);
+  background: var(--bg-light);
+  color: var(--text-light);
+  transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+body.dark-theme {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* --- Modern Card Styling --- */
+.card {
+  background: var(--card-bg-light);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-light);
+  border-radius: 1rem;
+  transition: all var(--transition-speed) ease;
+}
+
+body.dark-theme .card {
+  background: var(--card-bg-dark);
+  border: 1px solid var(--border-dark);
+}
+
+/* --- Form Styling --- */
+.form-control {
+  background: #ffffff;
+  border: 2px solid var(--border-light);
+  color: var(--text-light);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  transition: all var(--transition-speed) ease;
+}
+
+body.dark-theme .form-control {
+  background: rgba(30, 41, 59, 0.5);
+  border-color: var(--border-dark);
+  color: #ffffff;
+}
+
+.form-control::placeholder {
+  color: var(--text-secondary-light);
+  opacity: 0.8;
+}
+
+body.dark-theme .form-control::placeholder {
+  color: #cbd5e1;
+  opacity: 0.9;
+}
+
+.form-control:focus {
+  color: var(--text-light);
+  background: #ffffff;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  outline: none;
+}
+
+body.dark-theme .form-control:focus {
+  color: #ffffff;
+  background: rgba(30, 41, 59, 0.7);
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+body.dark-theme .form-label {
+  color: #ffffff;
+}
+
+/* --- Button Styling --- */
+.btn {
+  border-radius: 0.75rem;
+  font-weight: 600;
+  padding: 0.625rem 1.25rem;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+  border-color: var(--primary-light);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-hover-light) 0%, var(--secondary-hover-light) 100%);
+  border-color: var(--primary-hover-light);
+  color: white;
+}
+
+body.dark-theme .btn-primary {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+  border-color: var(--primary-dark);
+  color: white;
+}
+
+body.dark-theme .btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-hover-dark) 0%, var(--secondary-hover-dark) 100%);
+  border-color: var(--primary-hover-dark);
+  color: white;
+}
+
+/* Additional button states for dark theme */
+body.dark-theme .btn-primary:focus,
+body.dark-theme .btn-primary:active,
+body.dark-theme .btn-primary.active {
+  background: linear-gradient(135deg, var(--primary-hover-dark) 0%, var(--secondary-hover-dark) 100%) !important;
+  border-color: var(--primary-hover-dark) !important;
+  color: white !important;
+  box-shadow: 0 0 0 0.2rem rgba(129, 140, 248, 0.5) !important;
+}
+
+/* Force button styling in modals */
+body.dark-theme .modal .btn-primary {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%) !important;
+  border-color: var(--primary-dark) !important;
+  color: white !important;
+}
+
+body.dark-theme .modal .btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-hover-dark) 0%, var(--secondary-hover-dark) 100%) !important;
+  border-color: var(--primary-hover-dark) !important;
+  color: white !important;
+}
+
+.btn-outline-primary {
+  color: var(--primary-light);
+  border-color: var(--primary-light);
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background: var(--primary-light);
+  border-color: var(--primary-light);
+  color: white;
+}
+
+/* --- Navbar Modern Styling --- */
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: var(--shadow-light);
+}
+
+body.dark-theme .navbar-glass {
+  background: rgba(30, 41, 59, 0.9);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+/* Navbar Text Colors */
+.navbar-brand {
+  color: var(--text-light) !important;
+}
+
+.nav-link {
+  color: var(--text-light) !important;
+}
+
+.nav-link:hover {
+  color: var(--primary-light) !important;
+}
+
+.nav-link.active {
+  color: var(--primary-light) !important;
+  font-weight: 600;
+}
+
+body.dark-theme .navbar-brand {
+  color: #ffffff !important;
+}
+
+body.dark-theme .nav-link {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .nav-link:hover {
+  color: var(--primary-dark) !important;
+}
+
+body.dark-theme .nav-link.active {
+  color: var(--primary-dark) !important;
+}
+
+/* --- InfoCard Modern Styling --- */
+.info-card {
+  transition: all 0.3s ease;
+  cursor: default;
+  border: 1px solid var(--border-light);
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-large);
+  border-color: var(--primary-light);
+}
+
+body.dark-theme .info-card {
+  border-color: var(--border-dark);
+}
+
+body.dark-theme .info-card:hover {
+  border-color: var(--primary-dark);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Today's Events Specific Styling --- */
+.todays-events-summary .col-6.col-md-3:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+.todays-events-summary .text-primary,
+.todays-events-summary .text-success,
+.todays-events-summary .text-warning,
+.todays-events-summary .text-info {
+  transition: all 0.3s ease;
+}
+
+/* --- Completed Event Styling --- */
+.info-card.opacity-75 {
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0.6;
+  transform: scale(0.98);
+  filter: grayscale(0.3);
+  transition: all 0.3s ease;
+  border: 2px dashed var(--border-light);
+}
+
+body.dark-theme .info-card.opacity-75 {
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0.6;
+  border: 2px dashed var(--border-dark);
+}
+
+.info-card.opacity-75:hover {
+  opacity: 0.8;
+  transform: scale(0.99);
+  filter: grayscale(0.1);
+}
+
+.info-card.opacity-75 .card-title {
+  text-decoration: line-through;
+  color: var(--text-secondary-light) !important;
+}
+
+body.dark-theme .info-card.opacity-75 .card-title {
+  color: var(--text-secondary-dark) !important;
+}
+
+/* --- Icon Styling Enhancements --- */
+.event-icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.event-emoji {
+  position: absolute;
+  top: -0.3rem;
+  right: -0.3rem;
+  font-size: 1rem;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  60% {
+    transform: translateY(-1px);
+  }
+}
+
+/* Birthday specific sparkle effect */
+.birthday-icon {
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { 
+    filter: brightness(1) hue-rotate(0deg);
+  }
+  50% { 
+    filter: brightness(1.3) hue-rotate(10deg);
+  }
+}
+
+/* Anniversary heart beat effect */
+.anniversary-icon {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { 
+    transform: scale(1);
+  }
+  50% { 
+    transform: scale(1.05);
+  }
+}
+
+/* --- Contact Action Buttons --- */
+.btn-whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1eb757;
+  border-color: #1eb757;
+  color: white;
+}
+
+.btn-outline-success:hover {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+/* Contact buttons with active state */
+.contact-btn-active {
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15);
+  transform: scale(1.02);
+  border-color: #198754;
+}
+
+.contact-btn-whatsapp-active {
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.15);
+  transform: scale(1.02);
+  border-color: #25D366;
+}
+
+.contact-btn-email-active {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  transform: scale(1.02);
+  border-color: var(--primary-light);
+}
+
+/* --- Secondary Button Styles --- */
+.btn-outline-warning {
+  color: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.btn-outline-warning:hover {
+  background-color: #f59e0b;
+  border-color: #f59e0b;
+  color: white;
+}
+
+.btn-outline-info {
+  color: var(--accent-light);
+  border-color: var(--accent-light);
+}
+
+.btn-outline-info:hover {
+  background-color: var(--accent-light);
+  border-color: var(--accent-light);
+  color: white;
+}
+
+.btn-outline-secondary {
+  color: var(--text-secondary-light);
+  border-color: var(--border-light);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--text-secondary-light);
+  border-color: var(--text-secondary-light);
+  color: white;
+}
+
+/* --- Contact Info Display --- */
+.contact-info {
+  font-size: 0.85rem;
+  color: var(--text-secondary-light);
+  opacity: 0.9;
+}
+
+body.dark-theme .contact-info {
+  color: #e2e8f0;
+  opacity: 1;
+}
+
+/* --- Modern Page Headers --- */
+.page-header {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+  color: white;
+  padding: 2rem 0;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0.5rem 0 0 0;
+}
+
+/* --- Today's Events Modern Styling --- */
+.event-card {
+  background: var(--card-bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--primary-light);
+}
+
+body.dark-theme .event-card {
+  background: var(--card-bg-dark);
+  border-color: var(--border-dark);
+}
+
+body.dark-theme .event-card:hover {
+  border-color: var(--primary-dark);
+}
+
+/* --- Badge Styling --- */
+.badge {
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.badge-primary {
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+  color: white;
+}
+
+.badge-success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.badge-warning {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+/* --- Loading States --- */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* --- Hero Gradient Text --- */
+.hero-gradient-text {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 50%, var(--primary-light) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 3s ease-in-out infinite alternate;
+  text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
+  100% {
+    background-position: 100% 50%;
+    filter: brightness(1.2);
+  }
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (-webkit-background-clip: text) {
+  .hero-gradient-text {
+    color: var(--primary-light);
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  }
+}
+
+body.dark-theme .hero-gradient-text {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 50%, var(--primary-dark) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(129, 140, 248, 0.4);
+}
+
+/* Dark Mode Text Improvements */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+  color: #ffffff !important;
+}
+
+body.dark-theme p {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .text-muted {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .page-title {
+  color: #ffffff !important;
+}
+
+body.dark-theme .page-subtitle {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .card-title {
+  color: #ffffff !important;
+}
+
+body.dark-theme .card-text {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .dropdown-item {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .dropdown-item:hover {
+  background-color: rgba(129, 140, 248, 0.1) !important;
+  color: #ffffff !important;
+}
+
+/* --- Modal Dark Theme Styling --- */
+.modal-content {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-large);
+}
+
+body.dark-theme .modal-content {
+  background-color: #1e293b;
+  color: #ffffff;
+}
+
+body.dark-theme .modal-header {
+  border-bottom: 1px solid var(--border-dark);
+  background-color: #334155;
+}
+
+body.dark-theme .modal-title {
+  color: #ffffff !important;
+}
+
+body.dark-theme .modal-body {
+  background-color: #1e293b;
+}
+
+body.dark-theme .btn-close {
+  filter: invert(1);
+}
+
+/* --- Form Select Dark Theme --- */
+.form-select {
+  background: #ffffff;
+  border: 2px solid var(--border-light);
+  color: var(--text-light);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  transition: all var(--transition-speed) ease;
+}
+
+body.dark-theme .form-select {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: var(--border-dark);
+  color: #ffffff;
+}
+
+body.dark-theme .form-select:focus {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: var(--primary-dark);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
+}
+
+body.dark-theme .form-select option {
+  background-color: #1e293b;
+  color: #ffffff;
+}
+
+/* --- Textarea Dark Theme --- */
+textarea.form-control {
+  background: #ffffff;
+  border: 2px solid var(--border-light);
+  color: var(--text-light);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  transition: all var(--transition-speed) ease;
+  resize: vertical;
+  min-height: 100px;
+}
+
+body.dark-theme textarea.form-control {
+  background: rgba(30, 41, 59, 0.5);
+  border-color: var(--border-dark);
+  color: #ffffff;
+}
+
+body.dark-theme textarea.form-control:focus {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: var(--primary-dark);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
+}
+
+body.dark-theme textarea.form-control::placeholder {
+  color: #cbd5e1;
+  opacity: 0.9;
+}
