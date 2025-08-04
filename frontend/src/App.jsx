@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link, NavLink, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link, NavLink, useNavigate } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,6 +13,9 @@ import MainPage from './MainPage/MainPage.jsx';
 import TodaysEvents from './TodaysEvents/TodaysEvents.jsx';
 import ContactCollectionPage from './ContactCollection/ContactCollectionPage.jsx';
 import PersonalContactPage from './ContactCollection/PersonalContactPage.jsx';
+
+// Import PWA hook
+import { PWAStatus } from './hooks/usePWA.jsx';
 
 function Navbar() {
   const navigate = useNavigate();
@@ -124,7 +127,11 @@ function App() {
         <Route path="/dashboard" element={<MainPage />} />
         <Route path="/share/:shareToken" element={<ContactCollectionPage />} />
         <Route path="/contact/:personalToken" element={<PersonalContactPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      
+      {/* PWA Status Component */}
+      <PWAStatus />
     </>
   );
 }

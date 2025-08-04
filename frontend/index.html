@@ -6,6 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal CRM - Clean & Modern</title>
     
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Manage your contacts and never miss important events with Personal CRM">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Personal CRM">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- PWA Icons for iOS -->
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png">
+    
+    <!-- PWA Splash Screen for iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,5 +37,89 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('PWA: Service Worker registered successfully', registration);
+              
+              // Check for updates
+              registration.addEventListener('updatefound', () => {
+                console.log('PWA: New version available');
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    // Show update available notification
+                    if (confirm('A new version is available. Reload to update?')) {
+                      window.location.reload();
+                    }
+                  }
+                });
+              });
+            })
+            .catch((error) => {
+              console.error('PWA: Service Worker registration failed', error);
+            });
+        });
+      }
+
+      // PWA Install Prompt
+      let deferredPrompt;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // Show install button or banner
+        console.log('PWA: Install prompt available');
+        
+        // You can add a custom install button here
+        showInstallBanner();
+      });
+
+      function showInstallBanner() {
+        // Create install banner (optional)
+        const installBanner = document.createElement('div');
+        installBanner.innerHTML = `
+          <div style="position: fixed; top: 0; left: 0; right: 0; background: #6366f1; color: white; padding: 1rem; text-align: center; z-index: 9999;">
+            <span>📱 Install Personal CRM for a better experience!</span>
+            <button onclick="installPWA()" style="margin-left: 1rem; background: white; color: #6366f1; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Install</button>
+            <button onclick="dismissInstallBanner()" style="margin-left: 0.5rem; background: transparent; color: white; border: 1px solid white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Later</button>
+          </div>
+        `;
+        installBanner.id = 'install-banner';
+        document.body.appendChild(installBanner);
+      }
+
+      function installPWA() {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('PWA: User accepted install prompt');
+            }
+            deferredPrompt = null;
+            dismissInstallBanner();
+          });
+        }
+      }
+
+      function dismissInstallBanner() {
+        const banner = document.getElementById('install-banner');
+        if (banner) {
+          banner.remove();
+        }
+      }
+
+      // PWA Installed Event
+      window.addEventListener('appinstalled', (evt) => {
+        console.log('PWA: App was installed successfully');
+        dismissInstallBanner();
+      });
+    </script>
+  </body>
+</html>
   </body>
 </html>

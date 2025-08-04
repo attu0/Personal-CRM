@@ -12,5 +12,32 @@ export default defineConfig({
         secure: false,
       }
     }
-  }
+  },
+  build: {
+    // PWA optimizations
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          bootstrap: ['bootstrap'],
+          axios: ['axios']
+        }
+      }
+    },
+    // Generate service worker compatible build
+    sourcemap: true,
+    // Optimize for PWA
+    target: 'esnext',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    }
+  },
+  // PWA manifest handling
+  publicDir: 'public',
+  base: './'
 })
