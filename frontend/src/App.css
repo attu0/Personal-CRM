@@ -1,28 +1,30 @@
 /* --- CSS Variables for Theming --- */
 :root {
-  /* Light (White with Blue-Purple) Theme */
+  /* Light Theme - Professional Blue Scheme */
   --bg-light: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
   --card-bg-light: rgba(255, 255, 255, 0.95);
-  --text-light: #1e293b;
-  --text-secondary-light: #64748b;
-  --border-light: rgba(148, 163, 184, 0.2);
-  --primary-light: #6366f1; /* Indigo */
-  --primary-hover-light: #4f46e5;
-  --secondary-light: #8b5cf6; /* Purple */
-  --secondary-hover-light: #7c3aed;
-  --accent-light: #06b6d4; /* Cyan */
+  --text-light: #111827; /* Dark Gray */
+  --text-secondary-light: #6b7280;
+  --border-light: rgba(243, 244, 246, 0.8); /* Light Gray Border */
+  --primary-light: #2563EB; /* Professional Blue */
+  --primary-hover-light: #1d4ed8;
+  --secondary-light: #f3f4f6; /* Light Gray Background */
+  --secondary-hover-light: #e5e7eb;
+  --accent-light: #f59e0b; /* Amber for highlights */
+  --success-light: #10b981; /* Emerald Green for WhatsApp/Call */
   
-  /* Dark Theme */
+  /* Dark Theme - New Color Scheme */
   --bg-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   --card-bg-dark: rgba(30, 41, 59, 0.8);
-  --text-dark: #ffffff;
-  --text-secondary-dark: #cbd5e1;
-  --border-dark: rgba(148, 163, 184, 0.3);
-  --primary-dark: #818cf8; /* Light Indigo for dark mode */
-  --primary-hover-dark: #6366f1;
-  --secondary-dark: #a78bfa; /* Light Purple for dark mode */
-  --secondary-hover-dark: #8b5cf6;
-  --accent-dark: #22d3ee; /* Light Cyan */
+  --text-dark: #f9fafb; /* White */
+  --text-secondary-dark: #9ca3af; /* Secondary Light Gray */
+  --border-dark: rgba(31, 41, 55, 0.6);
+  --primary-dark: #3b82f6; /* Softer blue for dark backgrounds */
+  --primary-hover-dark: #2563eb;
+  --secondary-dark: #1f2937; /* Dark Gray Background */
+  --secondary-hover-dark: #374151;
+  --accent-dark: #f59e0b; /* Amber for highlights */
+  --success-dark: #10b981; /* Emerald Green for WhatsApp/Call */
 
   /* Universal */
   --font-main: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
@@ -47,34 +49,34 @@ body.dark-theme input.form-control:focus {
 }
 
 body.dark-theme input.form-control::placeholder {
-  color: #cbd5e1;
+  color: #9ca3af !important;
   opacity: 0.9;
 }
 
 /* --- Label and text styling for dark theme --- */
 body.dark-theme .text-muted {
-  color: #cbd5e1 !important;
+  color: #9ca3af !important;
 }
 
 body.dark-theme h6.text-muted {
-  color: #e2e8f0 !important;
+  color: #f9fafb !important;
 }
 
 body.dark-theme label {
-  color: #ffffff !important;
+  color: #f9fafb !important;
 }
 
 /* --- Button Dark Theme Styling --- */
 body.dark-theme .btn-primary {
-  background: var(--primary-dark);
-  border-color: var(--primary-dark);
-  color: #ffffff;
+  background: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+  color: #ffffff !important;
 }
 
 body.dark-theme .btn-primary:hover {
-  background: #6366f1;
-  border-color: #6366f1;
-  color: #ffffff;
+  background: var(--primary-hover-dark) !important;
+  border-color: var(--primary-hover-dark) !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
 }
 
@@ -166,7 +168,7 @@ body.dark-theme .card {
 body.dark-theme .form-control {
   background: rgba(30, 41, 59, 0.5);
   border-color: var(--border-dark);
-  color: #ffffff;
+  color: #f9fafb;
 }
 
 .form-control::placeholder {
@@ -532,7 +534,7 @@ body.dark-theme .contact-info {
 
 /* --- Modern Page Headers --- */
 .page-header {
-  background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-hover-light) 100%);
   color: white;
   padding: 2rem 0;
   border-radius: 1rem;
@@ -614,13 +616,13 @@ body.dark-theme .event-card:hover {
 
 /* --- Hero Gradient Text --- */
 .hero-gradient-text {
-  background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 50%, var(--primary-light) 100%);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-hover-light) 50%, var(--accent-light) 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: shine 3s ease-in-out infinite alternate;
-  text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+  text-shadow: 0 0 30px rgba(37, 99, 235, 0.3);
 }
 
 @keyframes shine {
@@ -704,7 +706,7 @@ body.dark-theme .dropdown-item:hover {
 
 body.dark-theme .modal-content {
   background-color: #1e293b;
-  color: #ffffff;
+  color: #f9fafb;
 }
 
 body.dark-theme .modal-header {
@@ -713,7 +715,7 @@ body.dark-theme .modal-header {
 }
 
 body.dark-theme .modal-title {
-  color: #ffffff !important;
+  color: #f9fafb !important;
 }
 
 body.dark-theme .modal-body {
@@ -737,19 +739,19 @@ body.dark-theme .btn-close {
 body.dark-theme .form-select {
   background: rgba(30, 41, 59, 0.8);
   border-color: var(--border-dark);
-  color: #ffffff;
+  color: #f9fafb;
 }
 
 body.dark-theme .form-select:focus {
   background: rgba(30, 41, 59, 0.9);
   border-color: var(--primary-dark);
-  color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
+  color: #f9fafb;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 body.dark-theme .form-select option {
   background-color: #1e293b;
-  color: #ffffff;
+  color: #f9fafb;
 }
 
 /* --- Textarea Dark Theme --- */
@@ -767,17 +769,17 @@ textarea.form-control {
 body.dark-theme textarea.form-control {
   background: rgba(30, 41, 59, 0.5);
   border-color: var(--border-dark);
-  color: #ffffff;
+  color: #f9fafb;
 }
 
 body.dark-theme textarea.form-control:focus {
   background: rgba(30, 41, 59, 0.7);
   border-color: var(--primary-dark);
-  color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
+  color: #f9fafb;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 body.dark-theme textarea.form-control::placeholder {
-  color: #cbd5e1;
+  color: #9ca3af;
   opacity: 0.9;
 }
